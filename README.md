@@ -98,5 +98,3 @@ MIT License
 Artisan Coffee Roasters
 
 ---
-
-**注意**: このサイトはPageSpeed Insightsで90点以上を目標として設計されています。実際のスコアは、サーバーの設定、ネットワーク環境、デバイスの性能によって異なる場合があります。
