@@ -1,31 +1,36 @@
-/* Non-critical CSS - Loaded asynchronously */
+/* Non-critical CSS - Loaded asynchronously with CLS prevention */
 
-/* Typography */
+/* Typography with fixed dimensions to prevent layout shift */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     line-height: 1.2;
     margin-bottom: 1rem;
+    min-height: 1.2em; /* Prevent layout shift */
 }
 
 h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 300;
+    min-height: clamp(2.75rem, 5.5vw, 4.4rem); /* Prevent layout shift */
 }
 
 h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 400;
+    min-height: clamp(2.4rem, 4.8vw, 3.6rem); /* Prevent layout shift */
 }
 
 h3 {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 500;
+    min-height: clamp(1.8rem, 3.6vw, 2.4rem); /* Prevent layout shift */
 }
 
 p {
     margin-bottom: 1rem;
     font-size: 1rem;
     line-height: 1.7;
+    min-height: 1.7em; /* Prevent layout shift */
 }
 
 /* Container */
@@ -126,10 +131,13 @@ p {
 
 .product-image {
     height: 250px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    aspect-ratio: 1 / 1; /* Fixed aspect ratio */
+    min-height: 250px; /* Prevent layout shift */
 }
 
 .coffee-bag {
@@ -138,6 +146,8 @@ p {
     border-radius: 10px;
     position: relative;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0; /* Prevent shrinking */
+    aspect-ratio: 2 / 3; /* Fixed aspect ratio */
 }
 
 .coffee-bag.ethiopia {
@@ -474,11 +484,43 @@ p {
     }
 }
 
-/* Performance Optimizations */
+/* Performance Optimizations - Prevent forced reflows */
 .hero-image,
 .about-image,
 .product-image {
     will-change: transform;
+    contain: layout style paint; /* Prevent layout thrashing */
+}
+
+/* Optimize animations to prevent forced reflows */
+.coffee-beans {
+    will-change: transform;
+    contain: layout style paint;
+    transform: translateZ(0); /* Force hardware acceleration */
+}
+
+.roasting-process::before {
+    will-change: transform;
+    contain: layout style paint;
+    transform: translateZ(0); /* Force hardware acceleration */
+}
+
+.product-card {
+    will-change: transform;
+    contain: layout style paint;
+    transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Use transform instead of changing layout properties */
+.navbar {
+    will-change: transform;
+    contain: layout style paint;
+}
+
+/* Optimize transitions to use transform and opacity only */
+.nav-link::after {
+    will-change: width;
+    contain: layout style paint;
 }
 
 /* Reduce motion for users who prefer it */
@@ -487,6 +529,14 @@ p {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+    
+    .coffee-beans {
+        animation: none !important;
+    }
+    
+    .roasting-process::before {
+        animation: none !important;
     }
 }
 

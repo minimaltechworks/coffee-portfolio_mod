@@ -98,7 +98,7 @@
         }, 5000);
     }
     
-    // Scroll animations
+    // Scroll animations - Optimized to prevent forced reflows
     function initScrollAnimations() {
         if (!('IntersectionObserver' in window)) return;
         
@@ -110,8 +110,11 @@
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    // Use requestAnimationFrame to prevent forced reflows
+                    requestAnimationFrame(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    });
                 }
             });
         }, observerOptions);
@@ -120,9 +123,12 @@
         const animatedElements = document.querySelectorAll('.product-card, .about-text, .about-image, .contact-info, .contact-form');
         
         animatedElements.forEach(el => {
+            // Set initial state without causing reflow
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.willChange = 'opacity, transform';
+            el.style.contain = 'layout style paint';
             observer.observe(el);
         });
     }
