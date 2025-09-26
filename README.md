@@ -50,9 +50,9 @@ coffee-portfolio/
 ```bash
 cd /Users/yhinoda/Documents/coffee-portfolio
 git init
-git remote add origin https://github.com/yourusername/portfolio-_001.git
+git remote add origin https://github.com/yourusername/coffee-portfolio.git
 git add .
-git commit -m "Optimized coffee portfolio for 90+ PageSpeed score"
+git commit -m "Coffee portfolio"
 git push -u origin main
 ```
 
@@ -63,7 +63,7 @@ git push -u origin main
 4. 「Save」をクリック
 
 ### 4. 公開完了
-- サイトURL: `https://yourusername.github.io/portfolio-_001/`
+- サイトURL: `https://yourusername.github.io/coffee-portfolio/`
 
 ### サーバー側の最適化
 - **CDNの使用**: CloudflareやAWS CloudFrontの活用
