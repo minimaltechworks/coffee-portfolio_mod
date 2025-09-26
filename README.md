@@ -1,4 +1,4 @@
-# Artisan Coffee Roasters - 高性能ポートフォリオサイト
+# Artisan Coffee Roasters - ポートフォリオサイト
 
 洗練されたデザインのスペシャルティコーヒーロースターのポートフォリオサイトです。
 
@@ -48,11 +48,11 @@ coffee-portfolio/
 
 ### 2. ファイルのプッシュ
 ```bash
-cd /Users/yhinoda/Documents/coffee-portfolio
+cd /Users/yhinoda/Documents/coffee-portfolio_mod
 git init
-git remote add origin https://github.com/yourusername/coffee-portfolio.git
+git remote add origin https://github.com/yourusername/coffee-portfolio_mod.git
 git add .
-git commit -m "Coffee portfolio"
+git commit -m "Coffee portfolio mod"
 git push -u origin main
 ```
 
