@@ -65,14 +65,6 @@ git push -u origin main
 ### 4. 公開完了
 - サイトURL: `https://yourusername.github.io/portfolio-_001/`
 
-## 📊 PageSpeed Insightsでのテスト
-
-1. [PageSpeed Insights](https://pagespeed.web.dev/?hl=ja)にアクセス
-2. 公開されたURLを入力
-3. 「分析」をクリック
-
-## 🔧 さらなる最適化のヒント
-
 ### サーバー側の最適化
 - **CDNの使用**: CloudflareやAWS CloudFrontの活用
 - **HTTP/3の有効化**: 最新のプロトコルの使用
